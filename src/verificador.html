@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verificador de Link — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html" aria-current="page">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <header class="stack">
+        <h1>Verificador de link</h1>
+        <p class="text-muted">Cole a URL recebida em uma mensagem e consulte nossa base de domínios suspeitos.</p>
+      </header>
+
+      <form class="form card mt-4" id="form-verificador" method="post" action="#" novalidate>
+        <div class="campo">
+          <label for="url">URL suspeita</label>
+          <input
+            type="url"
+            id="url"
+            name="url"
+            required
+            placeholder="https://exemplo.com/caminho"
+            aria-describedby="url-ajuda">
+          <p id="url-ajuda" class="campo__ajuda">Inclua o http:// ou https:// no início.</p>
+          <p id="url-erro" class="campo__erro" role="alert" hidden></p>
+        </div>
+        <div>
+          <button type="submit" class="btn btn--primario btn--grande">Verificar</button>
+          <button type="reset" class="btn btn--secundario">Limpar</button>
+        </div>
+      </form>
+
+      <div id="resultado-verificador" aria-live="polite"></div>
+
+      <section class="stack mt-6" aria-labelledby="historico-titulo">
+        <h2 id="historico-titulo">Suas últimas consultas</h2>
+        <div id="historico"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>AntiGolpe</h2>
+          <p>Plataforma educativa e colaborativa de prevenção a golpes digitais.</p>
+        </section>
+        <nav aria-labelledby="footer-recursos">
+          <h2 id="footer-recursos">Recursos</h2>
+          <ul>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="biblioteca.html">Biblioteca</a></li>
+            <li><a href="verificador.html">Verificar link</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-conta">
+          <h2 id="footer-conta">Conta</h2>
+          <ul>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="painel.html">Painel</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-sobre">
+          <h2 id="footer-sobre">Sobre</h2>
+          <ul>
+            <li><a href="admin.html">Área administrativa</a></li>
+            <li><a href="#">Como denunciar</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/verificador.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* =========================================================
+   Base — reset enxuto, tipografia e acessibilidade
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: var(--lh-normal);
+  color: var(--cinza-900);
+  background: var(--cinza-50);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+a { color: var(--azul-700); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+/* Títulos — escala fluida com clamp() */
+h1, h2, h3, h4 {
+  line-height: var(--lh-apertado);
+  margin: 0 0 var(--esp-3);
+  color: var(--cinza-900);
+  text-wrap: balance;
+}
+h1 { font-size: clamp(1.5rem, 3vw + 1rem, 2rem); letter-spacing: -.02em; }
+h2 { font-size: clamp(1.25rem, 1.5vw + .9rem, 1.5rem); letter-spacing: -.01em; }
+h3 { font-size: 1.125rem; }
+h4 { font-size: 1rem; }
+p  { margin: 0 0 var(--esp-4); }
+
+code {
+  font-family: var(--fonte-mono);
+  font-size: .9em;
+  background: var(--cinza-100);
+  padding: .1em .35em;
+  border-radius: 4px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--cinza-200);
+  margin: var(--esp-6) 0;
+}
+
+/* Foco visível — acessibilidade em todos os controles */
+:focus-visible {
+  outline: 2px solid var(--azul-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respeita usuário de teclado */
+::selection { background: var(--azul-100); color: var(--azul-900); }

@@ -1,0 +1,16 @@
+{
+  "name": "antigolpe",
+  "version": "1.0.0",
+  "description": "Plataforma educativa e colaborativa de prevenção a golpes digitais",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "npx serve src",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.1",
+    "vitest": "^2.1.8"
+  }
+}

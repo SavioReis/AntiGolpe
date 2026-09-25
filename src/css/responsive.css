@@ -1,0 +1,171 @@
+/* =========================================================
+   Responsivo — TODOS os breakpoints em um só arquivo
+   Abordagem: desktop-first (base = desktop; max-width = adaptações)
+
+   Breakpoints adotados:
+     ≥ 1025px    Desktop            (base)
+     769–1024px  Tablet horizontal
+     641–768px   Tablet vertical
+     481–640px   Mobile grande
+     ≤ 480px     Mobile pequeno
+   ========================================================= */
+
+
+/* =========================================================
+   1024px — Tablet horizontal / Desktop pequeno
+   ========================================================= */
+@media (max-width: 1024px) {
+
+  /* Menu vira compacto; ações do header se ocultam */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  .nav-principal {
+    position: absolute;
+    top: var(--altura-header);
+    left: 0;
+    right: 0;
+    background: var(--branco);
+    border-bottom: 1px solid var(--cinza-200);
+    box-shadow: var(--sombra);
+    padding: var(--esp-3);
+    display: none;
+    z-index: var(--z-nav-mobile);
+  }
+  .nav-principal[data-open="true"] { display: block; }
+  .nav-principal ul { flex-direction: column; gap: 0; }
+  .nav-principal a { display: block; padding: var(--esp-3); }
+  .acoes-header { display: none; }
+
+  /* Footer reduz para 2 colunas */
+  .footer-grid { grid-template-columns: 2fr 1fr; }
+
+  /* Artigo: coluna lateral desce para baixo */
+  .artigo-layout { grid-template-columns: 1fr; }
+
+  /* Hero mais compacto */
+  .hero { padding: var(--esp-6) var(--esp-5); }
+
+  /* Grids ficam 2 colunas no máximo */
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+
+/* =========================================================
+   768px — Tablet vertical
+   ========================================================= */
+@media (max-width: 768px) {
+
+  :root { --altura-header: 60px; }
+
+  main { padding: var(--esp-5) 0 var(--esp-7); }
+
+  /* Grids colapsam para coluna única */
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stats: 2 colunas */
+  .stats { grid-template-columns: repeat(2, 1fr); }
+
+  /* Hero: menos padding, tipografia menor */
+  .hero { padding: var(--esp-5); }
+  .hero p { font-size: 1rem; }
+
+  /* Cabeçalhos com ações empilham */
+  .admin-secao-header { flex-direction: column; align-items: stretch; }
+
+  /* Simulador: barra de topo empilha */
+  .simulador__topo { flex-direction: column; align-items: stretch; }
+  .simulador__topo .btn { align-self: flex-start; }
+
+  /* Rodapé: 1 coluna */
+  .footer-grid { grid-template-columns: 1fr; gap: var(--esp-5); }
+
+  /* Cards reduzem padding */
+  .card { padding: var(--esp-4); }
+  .feedback { padding: var(--esp-4); }
+
+  /* Cabeçalho do cenário empilha */
+  .cenario header { flex-direction: column; align-items: flex-start; }
+
+  /* Conquistas: mais compactas */
+  .conquistas { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+}
+
+
+/* =========================================================
+   640px — Mobile grande
+   ========================================================= */
+@media (max-width: 640px) {
+
+  /* Botões lado a lado viram coluna */
+  .decisao { grid-template-columns: 1fr; }
+
+  /* Botões de ação ficam em largura total */
+  .hero__acoes { flex-direction: column; }
+  .hero__acoes .btn { width: 100%; }
+
+  /* Stats em coluna única */
+  .stats { grid-template-columns: 1fr; }
+
+  /* Números grandes do stat ficam proporcionais */
+  .stat__valor { font-size: 1.75rem; }
+
+  /* Texto do cenário mais compacto */
+  .cenario__conteudo { font-size: .875rem; padding: var(--esp-3); }
+
+  /* Formulário de busca no mobile */
+  .card form .grid-2,
+  .card form .grid-3 { grid-template-columns: 1fr; }
+
+  /* Rodapé: colunas empilhadas, alinhamento centralizado */
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* =========================================================
+   480px — Mobile pequeno
+   ========================================================= */
+@media (max-width: 480px) {
+
+  :root {
+    --esp-7: 2rem;
+    --esp-8: 2.5rem;
+  }
+
+  .container { padding-inline: var(--esp-3); }
+
+  /* Hero com padding mínimo */
+  .hero {
+    padding: var(--esp-4);
+    border-radius: var(--raio);
+  }
+
+  /* Botões: padding ligeiramente menor */
+  .btn { padding: var(--esp-2) var(--esp-4); font-size: .875rem; }
+  .btn--grande { padding: var(--esp-3) var(--esp-5); font-size: .9375rem; }
+
+  /* Tabelas: forçar scroll é a estratégia — manter min-width */
+  .tabela { min-width: 480px; }
+
+  /* Badge e texto reduzidos */
+  .badge { font-size: .6875rem; }
+
+  /* Feedback mais enxuto */
+  .feedback { border-left-width: 3px; }
+
+  /* Cartões sem sombra de destaque no toque */
+  .card--interativo:hover { transform: none; }
+}
+
+
+/* =========================================================
+   Preferências de acessibilidade
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .card--interativo { transition: none; }
+  .card--interativo:hover { transform: none; }
+}

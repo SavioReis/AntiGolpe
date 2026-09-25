@@ -1,0 +1,74 @@
+/* =========================================================
+   Tokens — variáveis globais do design system
+   Centraliza cores, espaçamentos, raios e tipografia.
+   ========================================================= */
+
+:root {
+  /* Cores institucionais */
+  --azul-900: #0d3b66;
+  --azul-700: #1d5fa1;
+  --azul-500: #2b7cc9;
+  --azul-100: #e6f0fa;
+
+  /* Cores semânticas */
+  --vermelho: #d62828;
+  --vermelho-100: #fde8e8;
+  --verde: #2a9d8f;
+  --verde-100: #e3f4f1;
+  --amarelo: #d97706;
+  --amarelo-100: #fef3c7;
+
+  /* Neutros */
+  --cinza-900: #0f172a;
+  --cinza-700: #334155;
+  --cinza-500: #64748b;
+  --cinza-300: #cbd5e1;
+  --cinza-200: #e2e8f0;
+  --cinza-100: #f1f5f9;
+  --cinza-50:  #f8fafc;
+  --branco: #ffffff;
+
+  /* Raios e sombras */
+  --raio-sm: 6px;
+  --raio: 10px;
+  --raio-lg: 16px;
+  --sombra-sm: 0 1px 2px rgba(15, 23, 42, .06);
+  --sombra: 0 4px 12px rgba(15, 23, 42, .08);
+  --sombra-lg: 0 10px 30px rgba(15, 23, 42, .12);
+
+  /* Tipografia */
+  --fonte: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+           "Helvetica Neue", Arial, sans-serif;
+  --fonte-mono: "SF Mono", "Cascadia Code", Consolas, monospace;
+  --lh-apertado: 1.25;
+  --lh-normal: 1.6;
+
+  /* Escala de espaçamento (base 0.25rem = 4px) */
+  --esp-1: .25rem;
+  --esp-2: .5rem;
+  --esp-3: .75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-7: 3rem;
+  --esp-8: 4rem;
+
+  /* Dimensões de referência */
+  --largura-max: 1120px;
+  --largura-form: 520px;
+  --altura-header: 68px;
+
+  /* Camadas */
+  --z-header: 50;
+  --z-nav-mobile: 40;
+}
+
+/* Movimento reduzido — respeita preferência do usuário */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

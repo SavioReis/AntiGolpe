@@ -1,0 +1,118 @@
+/* =========================================================
+   Estilos específicos por página
+   Hero · Simulador · Verificador · Artigo · Admin
+   ========================================================= */
+
+/* ---------- Hero (Home) ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--azul-900), var(--azul-700));
+  color: var(--branco);
+  padding: clamp(var(--esp-6), 6vw, var(--esp-8)) clamp(var(--esp-5), 4vw, var(--esp-7));
+  border-radius: var(--raio-lg);
+  margin-bottom: var(--esp-6);
+}
+.hero h1 { color: var(--branco); }
+.hero p {
+  color: rgba(255, 255, 255, .9);
+  font-size: 1.125rem;
+  max-width: 60ch;
+}
+.hero__acoes {
+  display: flex;
+  gap: var(--esp-3);
+  flex-wrap: wrap;
+  margin-top: var(--esp-5);
+}
+.hero .btn--secundario {
+  background: rgba(255, 255, 255, .1);
+  color: var(--branco);
+  border-color: rgba(255, 255, 255, .3);
+}
+.hero .btn--secundario:hover { background: rgba(255, 255, 255, .2); }
+
+/* ---------- Simulador ---------- */
+.simulador__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--esp-5);
+}
+
+.cenario {
+  background: var(--branco);
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--raio-lg);
+  padding: var(--esp-5);
+  box-shadow: var(--sombra);
+}
+.cenario header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--esp-3);
+  padding-bottom: var(--esp-3);
+  border-bottom: 1px solid var(--cinza-200);
+  margin-bottom: var(--esp-4);
+  flex-wrap: wrap;
+}
+.cenario__canal { font-weight: 700; color: var(--azul-900); font-size: .875rem; }
+.cenario__conteudo {
+  font-family: var(--fonte-mono);
+  font-size: .9375rem;
+  line-height: 1.7;
+  background: var(--cinza-50);
+  border-left: 3px solid var(--azul-500);
+  padding: var(--esp-4);
+  border-radius: var(--raio-sm);
+  white-space: pre-wrap;
+  margin: 0;
+  word-break: break-word;
+}
+
+.decisao {
+  display: grid;
+  gap: var(--esp-3);
+  grid-template-columns: 1fr 1fr;
+  margin-top: var(--esp-5);
+}
+
+/* ---------- Verificador ---------- */
+.resultado {
+  border-radius: var(--raio);
+  padding: var(--esp-5);
+  margin-top: var(--esp-5);
+  border-left: 4px solid var(--cinza-300);
+  background: var(--branco);
+}
+.resultado--suspeito     { border-left-color: var(--vermelho); background: var(--vermelho-100); }
+.resultado--seguro       { border-left-color: var(--verde);    background: var(--verde-100); }
+.resultado--desconhecido { border-left-color: var(--amarelo);  background: var(--amarelo-100); }
+.resultado dl { margin: 0; }
+
+/* ---------- Artigo (Grid de 2 colunas) ---------- */
+.artigo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+  gap: var(--esp-6);
+  margin-top: var(--esp-5);
+}
+.artigo-conteudo { min-width: 0; } /* previne overflow em grid */
+.artigo-conteudo ul,
+.artigo-conteudo ol { padding-left: 1.25rem; }
+.artigo-conteudo li { margin-bottom: var(--esp-2); }
+
+/* ---------- Admin ---------- */
+.admin-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-secao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--esp-4);
+  flex-wrap: wrap;
+}

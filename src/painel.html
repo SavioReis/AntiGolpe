@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html" aria-current="page">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <header class="stack">
+        <h1>Olá, Marina 👋</h1>
+        <p class="text-muted">Este é o resumo do seu desempenho no AntiGolpe.</p>
+      </header>
+
+      <section aria-labelledby="resumo-titulo" class="stack mt-4">
+        <h2 id="resumo-titulo" class="visually-hidden">Resumo</h2>
+        <dl class="stats">
+          <div class="stat">
+            <dd class="stat__valor">1.240</dd>
+            <dt class="stat__rotulo">Pontuação total</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">87%</dd>
+            <dt class="stat__rotulo">Taxa de acerto</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">142</dd>
+            <dt class="stat__rotulo">Cenários respondidos</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">#24</dd>
+            <dt class="stat__rotulo">Posição no ranking</dt>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="desempenho-titulo" class="stack mt-6">
+        <h2 id="desempenho-titulo">Desempenho por categoria</h2>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Desempenho do usuário por categoria de golpe</caption>
+            <thead>
+              <tr>
+                <th scope="col">Categoria</th>
+                <th scope="col">Acertos</th>
+                <th scope="col">Erros</th>
+                <th scope="col">Aproveitamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Phishing bancário</td><td>48</td><td>4</td><td>92%</td></tr>
+              <tr><td>Falso boleto</td><td>22</td><td>3</td><td>88%</td></tr>
+              <tr><td>Clonagem de WhatsApp</td><td>30</td><td>11</td><td>73%</td></tr>
+              <tr><td>Falso marketplace</td><td>24</td><td>0</td><td>100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="historico-titulo" class="stack mt-6">
+        <h2 id="historico-titulo">Últimas tentativas</h2>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Histórico de tentativas do simulador</caption>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Cenários</th>
+                <th scope="col">Pontuação</th>
+                <th scope="col">Aproveitamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><time datetime="2025-11-14">14/11/2025</time></td><td>10</td><td>+230</td><td>90%</td></tr>
+              <tr><td><time datetime="2025-11-13">13/11/2025</time></td><td>10</td><td>+180</td><td>80%</td></tr>
+              <tr><td><time datetime="2025-11-11">11/11/2025</time></td><td>10</td><td>+210</td><td>85%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="conquistas-titulo" class="stack mt-6">
+        <h2 id="conquistas-titulo">Conquistas</h2>
+        <ul class="conquistas">
+          <li class="conquista">
+            <div class="conquista__icone" aria-hidden="true">🛡️</div>
+            <p class="conquista__nome">Primeira defesa</p>
+          </li>
+          <li class="conquista">
+            <div class="conquista__icone" aria-hidden="true">🎯</div>
+            <p class="conquista__nome">10 acertos seguidos</p>
+          </li>
+          <li class="conquista">
+            <div class="conquista__icone" aria-hidden="true">📚</div>
+            <p class="conquista__nome">Leitor dedicado</p>
+          </li>
+          <li class="conquista conquista--bloqueada">
+            <div class="conquista__icone" aria-hidden="true">🏆</div>
+            <p class="conquista__nome">Mestre AntiGolpe</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="denunciar-titulo" class="card mt-6">
+        <h2 id="denunciar-titulo" class="h3">Denunciar um golpe</h2>
+        <p class="text-muted">Recebeu algo suspeito? Registre aqui e ajude outras pessoas.</p>
+        <form class="form" id="form-denuncia" method="post" action="#" novalidate>
+          <div class="campo">
+            <label for="den-categoria">Categoria</label>
+            <select id="den-categoria" name="categoria" required>
+              <option value="">Selecione…</option>
+              <option value="phishing">Phishing bancário</option>
+              <option value="boleto">Falso boleto</option>
+              <option value="whatsapp">Clonagem de WhatsApp</option>
+              <option value="marketplace">Falso marketplace</option>
+              <option value="outro">Outro</option>
+            </select>
+            <p id="den-categoria-erro" class="campo__erro" role="alert" hidden></p>
+          </div>
+
+          <div class="campo">
+            <label for="den-canal">Canal em que recebeu</label>
+            <select id="den-canal" name="canal" required>
+              <option value="">Selecione…</option>
+              <option value="sms">SMS</option>
+              <option value="email">E-mail</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telefone">Ligação</option>
+              <option value="outro">Outro</option>
+            </select>
+            <p id="den-canal-erro" class="campo__erro" role="alert" hidden></p>
+          </div>
+
+          <div class="campo">
+            <label for="den-descricao">Descrição</label>
+            <textarea id="den-descricao" name="descricao" rows="4" required maxlength="800"></textarea>
+            <p class="campo__ajuda" id="den-contador">0/800 caracteres</p>
+            <p id="den-descricao-erro" class="campo__erro" role="alert" hidden></p>
+          </div>
+
+          <button type="submit" class="btn btn--primario">Enviar denúncia</button>
+
+          <div id="denuncia-feedback" hidden></div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>AntiGolpe</h2>
+          <p>Plataforma educativa e colaborativa de prevenção a golpes digitais.</p>
+        </section>
+        <nav aria-labelledby="footer-recursos">
+          <h2 id="footer-recursos">Recursos</h2>
+          <ul>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="biblioteca.html">Biblioteca</a></li>
+            <li><a href="verificador.html">Verificar link</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-conta">
+          <h2 id="footer-conta">Conta</h2>
+          <ul>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="painel.html">Painel</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-sobre">
+          <h2 id="footer-sobre">Sobre</h2>
+          <ul>
+            <li><a href="admin.html">Área administrativa</a></li>
+            <li><a href="#">Como denunciar</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/denuncia.js" defer></script>
+</body>
+</html>

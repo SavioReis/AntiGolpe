@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AntiGolpe — treine o reconhecimento de golpes digitais e consulte uma base colaborativa de fraudes.">
+  <title>AntiGolpe — Aprenda a reconhecer golpes digitais</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">
+        ☰ Menu
+      </button>
+
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="hero" aria-labelledby="hero-titulo">
+        <h1 id="hero-titulo">Você reconheceria um golpe antes de cair nele?</h1>
+        <p>
+          O AntiGolpe treina sua percepção com situações reais de SMS, e-mail e
+          mensagens — e mantém uma base colaborativa de golpes, domínios e
+          números suspeitos que qualquer pessoa pode consultar.
+        </p>
+        <div class="hero__acoes">
+          <a class="btn btn--primario btn--grande" href="simulador.html">Começar o teste</a>
+          <a class="btn btn--secundario btn--grande" href="biblioteca.html">Explorar a biblioteca</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="impacto-titulo" class="stack">
+        <h2 id="impacto-titulo" class="visually-hidden">Impacto da plataforma</h2>
+        <dl class="stats">
+          <div class="stat">
+            <dd class="stat__valor">1.240</dd>
+            <dt class="stat__rotulo">Cenários treinados hoje</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">380</dd>
+            <dt class="stat__rotulo">Domínios sinalizados</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">87%</dd>
+            <dt class="stat__rotulo">Acerto médio dos usuários</dt>
+          </div>
+          <div class="stat">
+            <dd class="stat__valor">52</dd>
+            <dt class="stat__rotulo">Artigos publicados</dt>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="como-funciona-titulo" class="stack mt-6">
+        <h2 id="como-funciona-titulo">Como funciona</h2>
+        <div class="grid grid-3">
+          <article class="card card--interativo">
+            <h3 class="card__titulo">1. Treine</h3>
+            <p>Enfrente situações reais de golpe no simulador e receba feedback imediato sobre cada decisão.</p>
+          </article>
+          <article class="card card--interativo">
+            <h3 class="card__titulo">2. Consulte</h3>
+            <p>Pesquise golpes por categoria, veja sinais de alerta e use o verificador para checar um link suspeito.</p>
+          </article>
+          <article class="card card--interativo">
+            <h3 class="card__titulo">3. Contribua</h3>
+            <p>Denuncie golpes que você recebeu. Sua contribuição ajuda a proteger outras pessoas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="golpes-titulo" class="stack mt-6">
+        <h2 id="golpes-titulo">Golpes mais comuns</h2>
+        <div class="grid grid-3">
+          <article class="card card--interativo">
+            <header>
+              <span class="badge badge--risco-alto">Risco alto</span>
+              <h3 class="card__titulo mt-4">Falso funcionário de banco</h3>
+            </header>
+            <p>Ligação alegando movimentação suspeita pede senha ou código do SMS para "cancelar" uma transação.</p>
+            <footer class="card__meta">
+              <span>Phishing bancário</span>
+              <span>·</span>
+              <a href="artigo.html">Ler mais</a>
+            </footer>
+          </article>
+
+          <article class="card card--interativo">
+            <header>
+              <span class="badge badge--risco-alto">Risco alto</span>
+              <h3 class="card__titulo mt-4">Boleto falso por e-mail</h3>
+            </header>
+            <p>Anexo de boleto com valor alterado, geralmente em nome de empresas conhecidas. Confira sempre o beneficiário.</p>
+            <footer class="card__meta">
+              <span>Falso boleto</span>
+              <span>·</span>
+              <a href="artigo.html">Ler mais</a>
+            </footer>
+          </article>
+
+          <article class="card card--interativo">
+            <header>
+              <span class="badge badge--risco-medio">Risco médio</span>
+              <h3 class="card__titulo mt-4">Clonagem de WhatsApp</h3>
+            </header>
+            <p>Alguém se passa por um conhecido pedindo dinheiro emprestado com urgência. Confirme por ligação.</p>
+            <footer class="card__meta">
+              <span>Engenharia social</span>
+              <span>·</span>
+              <a href="artigo.html">Ler mais</a>
+            </footer>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="cta-titulo" class="card mt-6 text-center">
+        <h2 id="cta-titulo">Comece agora — leva menos de 5 minutos</h2>
+        <p class="text-muted">Crie sua conta para salvar seu progresso e desbloquear conquistas.</p>
+        <a class="btn btn--primario btn--grande" href="cadastro.html">Criar conta gratuita</a>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>AntiGolpe</h2>
+          <p>Plataforma educativa e colaborativa de prevenção a golpes digitais.</p>
+        </section>
+        <nav aria-labelledby="footer-recursos">
+          <h2 id="footer-recursos">Recursos</h2>
+          <ul>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="biblioteca.html">Biblioteca</a></li>
+            <li><a href="verificador.html">Verificar link</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-conta">
+          <h2 id="footer-conta">Conta</h2>
+          <ul>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="painel.html">Painel</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-sobre">
+          <h2 id="footer-sobre">Sobre</h2>
+          <ul>
+            <li><a href="admin.html">Área administrativa</a></li>
+            <li><a href="#">Como denunciar</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

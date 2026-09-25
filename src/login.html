@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" style="max-width: 480px;">
+
+      <h1>Entrar na sua conta</h1>
+      <p class="text-muted">Acesse para salvar seu progresso e consultar seu histórico.</p>
+
+      <form class="form card mt-4" id="form-login" method="post" action="#" novalidate>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="voce@exemplo.com">
+          <p id="email-erro" class="campo__erro" role="alert" hidden></p>
+        </div>
+
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" required autocomplete="current-password" minlength="8">
+          <p id="senha-erro" class="campo__erro" role="alert" hidden></p>
+        </div>
+
+        <div class="campo--checkbox">
+          <input type="checkbox" id="lembrar" name="lembrar" value="1">
+          <label for="lembrar">Manter conectado neste dispositivo</label>
+        </div>
+
+        <button type="submit" class="btn btn--primario btn--bloco btn--grande">Entrar</button>
+
+        <div id="login-feedback" hidden></div>
+      </form>
+
+      <p class="text-center mt-4">
+        Não tem conta? <a href="cadastro.html">Cadastre-se gratuitamente</a>
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</body>
+</html>

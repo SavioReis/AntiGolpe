@@ -1,0 +1,169 @@
+/* =========================================================
+   Layout — container, header, nav, main, footer e grids
+   Aqui ficam as estruturas macro (Flexbox + Grid).
+   ========================================================= */
+
+/* ---------- Container central ---------- */
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+  padding-inline: var(--esp-4);
+}
+
+main {
+  padding: var(--esp-6) 0 var(--esp-8);
+  min-height: calc(100vh - var(--altura-header) - 200px);
+}
+
+/* ---------- Grid system (CSS Grid) ---------- */
+.grid {
+  display: grid;
+  gap: var(--esp-5);
+}
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+/* Empilhamento vertical com espaçamento consistente */
+.stack > * + * { margin-top: var(--esp-5); }
+
+/* ---------- Header (Flexbox) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--branco);
+  border-bottom: 1px solid var(--cinza-200);
+  box-shadow: var(--sombra-sm);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-4);
+  height: var(--altura-header);
+}
+
+/* Marca */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--azul-900);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.brand:hover { text-decoration: none; }
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: var(--raio-sm);
+  background: linear-gradient(135deg, var(--azul-700), var(--azul-500));
+  color: var(--branco);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Navegação principal (Flexbox) */
+.nav-principal { margin-left: auto; }
+.nav-principal ul {
+  display: flex;
+  gap: var(--esp-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.nav-principal a {
+  display: inline-block;
+  padding: var(--esp-2) var(--esp-3);
+  border-radius: var(--raio-sm);
+  color: var(--cinza-700);
+  font-size: .9375rem;
+  font-weight: 500;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.nav-principal a:hover {
+  background: var(--cinza-100);
+  color: var(--azul-900);
+  text-decoration: none;
+}
+.nav-principal a[aria-current="page"] {
+  background: var(--azul-100);
+  color: var(--azul-900);
+  font-weight: 600;
+}
+
+/* Ações do header (Flexbox) */
+.acoes-header { display: flex; gap: var(--esp-2); flex-shrink: 0; }
+
+/* Botão hamburguer (oculto no desktop) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--cinza-300);
+  border-radius: var(--raio-sm);
+  padding: var(--esp-2) var(--esp-3);
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--cinza-700);
+}
+.menu-toggle:hover { background: var(--cinza-100); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--azul-900);
+  color: rgba(255, 255, 255, .8);
+  padding: var(--esp-7) 0 var(--esp-5);
+  margin-top: var(--esp-8);
+}
+.site-footer h2 {
+  color: var(--branco);
+  font-size: 1rem;
+  margin-bottom: var(--esp-3);
+}
+.site-footer a { color: rgba(255, 255, 255, .8); }
+.site-footer a:hover { color: var(--branco); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: var(--esp-2); font-size: .875rem; }
+
+/* Footer em Grid: 2fr + 3 colunas de 1fr */
+.footer-grid {
+  display: grid;
+  gap: var(--esp-6);
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.footer-bottom {
+  margin-top: var(--esp-6);
+  padding-top: var(--esp-4);
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  font-size: .8125rem;
+  color: rgba(255, 255, 255, .6);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+}
+
+/* ---------- Utilitários ---------- */
+.text-center { text-align: center; }
+.text-muted  { color: var(--cinza-500); }
+.mt-4 { margin-top: var(--esp-4); }
+.mt-6 { margin-top: var(--esp-6); }
+.mb-0 { margin-bottom: 0; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

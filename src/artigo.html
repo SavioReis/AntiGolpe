@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phishing bancário por SMS — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span class="brand__mark" aria-hidden="true">AG</span><span>AntiGolpe</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <nav aria-label="Trilha de navegação" class="text-muted">
+        <a href="index.html">Início</a> /
+        <a href="biblioteca.html">Biblioteca</a> /
+        <span>Phishing bancário por SMS</span>
+      </nav>
+
+      <div class="grid" style="grid-template-columns: minmax(0,2.5fr) minmax(0,1fr); gap: var(--esp-6); margin-top: var(--esp-5);">
+
+        <article>
+          <header class="stack">
+            <span class="badge badge--risco-alto">Risco alto</span>
+            <h1>Phishing bancário por SMS</h1>
+            <p class="text-muted">
+              Publicado em <time datetime="2025-10-02">2 de outubro de 2025</time>
+              · por <strong>Equipe AntiGolpe</strong> · 5 min de leitura
+            </p>
+          </header>
+
+          <section class="stack">
+            <h2>Como funciona</h2>
+            <p>
+              O criminoso envia uma mensagem de texto que imita a comunicação oficial
+              de um banco. O texto normalmente contém uma <em>urgência artificial</em>
+              (compra suspeita, bloqueio de conta, promoção imperdível) e um link
+              encurtado que leva a um site clonado idêntico ao do banco.
+            </p>
+            <p>
+              No site falso, o usuário digita login, senha e o código recebido por SMS —
+              que na verdade é o token de autorização de uma transferência. Nesse
+              momento, o criminoso já tem acesso à conta.
+            </p>
+          </section>
+
+          <section class="stack">
+            <h2>Sinais de alerta</h2>
+            <ul>
+              <li>Remetente que exibe o nome do banco (isso é falsificável).</li>
+              <li>Link encurtado (<code>bit.ly</code>, <code>tinyurl</code>, etc.) em vez do domínio oficial.</li>
+              <li>Erros de português ou formatação estranha.</li>
+              <li>Pedido de senha, token ou código por telefone, SMS ou chat.</li>
+              <li>Pressa: "cancele em 30 minutos", "última chance".</li>
+            </ul>
+          </section>
+
+          <section class="stack">
+            <h2>Como se proteger</h2>
+            <ol>
+              <li>Nunca clique em links de mensagens não solicitadas — abra o app oficial do banco.</li>
+              <li>Bancos não pedem senha nem código de verificação por telefone ou SMS.</li>
+              <li>Cadastre-se para receber alertas apenas dentro do app do banco.</li>
+              <li>Em caso de dúvida, ligue no número impresso no verso do cartão.</li>
+            </ol>
+          </section>
+
+          <footer class="card mt-6">
+            <h2 class="h3">Recebeu uma mensagem assim?</h2>
+            <p class="text-muted mb-0">Ajude a comunidade registrando o caso no AntiGolpe.</p>
+            <p class="mt-4 mb-0"><a class="btn btn--primario" href="painel.html">Denunciar golpe</a></p>
+          </footer>
+        </article>
+
+        <aside aria-labelledby="relacionados-titulo" class="stack">
+          <section class="card">
+            <h2 id="relacionados-titulo" class="h3">Artigos relacionados</h2>
+            <ul>
+              <li><a href="artigo.html">Boleto adulterado por e-mail</a></li>
+              <li><a href="artigo.html">Clonagem de WhatsApp</a></li>
+              <li><a href="artigo.html">Falsas centrais de atendimento</a></li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2 class="h3">Verifique um link</h2>
+            <p class="text-muted">Cole uma URL suspeita e consulte nossa base.</p>
+            <a class="btn btn--secundario btn--bloco" href="verificador.html">Abrir verificador</a>
+          </section>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

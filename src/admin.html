@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administração — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <header class="stack">
+        <h1>Área administrativa</h1>
+        <p class="text-muted">Gerencie conteúdo, moderação e domínios suspeitos.</p>
+      </header>
+
+      <nav aria-label="Seções administrativas" class="mt-4">
+        <ul class="admin-nav grid grid-4">
+          <li><a class="btn btn--secundario btn--bloco" href="#cenarios">Cenários</a></li>
+          <li><a class="btn btn--secundario btn--bloco" href="#artigos">Artigos</a></li>
+          <li><a class="btn btn--secundario btn--bloco" href="#dominios">Domínios suspeitos</a></li>
+          <li><a class="btn btn--secundario btn--bloco" href="#denuncias">Moderação</a></li>
+        </ul>
+      </nav>
+
+      <section id="cenarios" class="stack mt-6" aria-labelledby="cenarios-titulo">
+        <div class="admin-secao-header">
+          <h2 id="cenarios-titulo">Cenários do simulador</h2>
+          <a class="btn btn--primario" href="#">+ Novo cenário</a>
+        </div>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Lista de cenários do simulador</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Título</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">É golpe?</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#101</td>
+                <td>Compra suspeita por SMS</td>
+                <td>Phishing bancário</td>
+                <td><span class="badge badge--risco-alto">Sim</span></td>
+                <td><a href="#">Editar</a> · <a href="#">Excluir</a></td>
+              </tr>
+              <tr>
+                <td>#102</td>
+                <td>Confirmação de entrega dos Correios</td>
+                <td>Phishing genérico</td>
+                <td><span class="badge badge--risco-alto">Sim</span></td>
+                <td><a href="#">Editar</a> · <a href="#">Excluir</a></td>
+              </tr>
+              <tr>
+                <td>#103</td>
+                <td>Alerta legítimo de app bancário</td>
+                <td>Comunicação legítima</td>
+                <td><span class="badge badge--risco-baixo">Não</span></td>
+                <td><a href="#">Editar</a> · <a href="#">Excluir</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="artigos" class="stack mt-6" aria-labelledby="artigos-titulo">
+        <div class="admin-secao-header">
+          <h2 id="artigos-titulo">Artigos da biblioteca</h2>
+          <a class="btn btn--primario" href="#">+ Novo artigo</a>
+        </div>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Lista de artigos</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Título</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#A1</td>
+                <td>Phishing bancário por SMS</td>
+                <td>Phishing bancário</td>
+                <td><span class="badge badge--risco-baixo">Publicado</span></td>
+                <td><a href="#">Editar</a></td>
+              </tr>
+              <tr>
+                <td>#A2</td>
+                <td>Boleto adulterado por e-mail</td>
+                <td>Falso boleto</td>
+                <td><span class="badge badge--risco-baixo">Publicado</span></td>
+                <td><a href="#">Editar</a></td>
+              </tr>
+              <tr>
+                <td>#A3</td>
+                <td>Como verificar um link suspeito</td>
+                <td>Guia geral</td>
+                <td><span class="badge badge--risco-medio">Rascunho</span></td>
+                <td><a href="#">Editar</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="dominios" class="stack mt-6" aria-labelledby="dominios-titulo">
+        <div class="admin-secao-header">
+          <h2 id="dominios-titulo">Domínios suspeitos</h2>
+          <a class="btn btn--primario" href="#">+ Novo domínio</a>
+        </div>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Lista de domínios suspeitos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Domínio</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Confiança</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>bx-seguranca-login.com</code></td>
+                <td>Phishing bancário</td>
+                <td>92%</td>
+                <td><a href="#">Editar</a> · <a href="#">Excluir</a></td>
+              </tr>
+              <tr>
+                <td><code>promo-black-friday-2025.xyz</code></td>
+                <td>Falso marketplace</td>
+                <td>65%</td>
+                <td><a href="#">Editar</a> · <a href="#">Excluir</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="denuncias" class="stack mt-6" aria-labelledby="denuncias-titulo">
+        <h2 id="denuncias-titulo">Moderação de denúncias</h2>
+        <div class="tabela-wrapper">
+          <table class="tabela">
+            <caption class="visually-hidden">Fila de denúncias pendentes</caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Usuário</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#D4021</td>
+                <td>marina@exemplo.com</td>
+                <td>Clonagem de WhatsApp</td>
+                <td><span class="badge badge--risco-medio">Pendente</span></td>
+                <td><a href="#">Aprovar</a> · <a href="#">Rejeitar</a></td>
+              </tr>
+              <tr>
+                <td>#D4020</td>
+                <td>joao@exemplo.com</td>
+                <td>Falso boleto</td>
+                <td><span class="badge badge--risco-baixo">Aprovada</span></td>
+                <td><a href="#">Ver</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>AntiGolpe</h2>
+          <p>Plataforma educativa e colaborativa de prevenção a golpes digitais.</p>
+        </section>
+        <nav aria-labelledby="footer-recursos">
+          <h2 id="footer-recursos">Recursos</h2>
+          <ul>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="biblioteca.html">Biblioteca</a></li>
+            <li><a href="verificador.html">Verificar link</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-conta">
+          <h2 id="footer-conta">Conta</h2>
+          <ul>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="painel.html">Painel</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-sobre">
+          <h2 id="footer-sobre">Sobre</h2>
+          <ul>
+            <li><a href="admin.html">Área administrativa</a></li>
+            <li><a href="#">Como denunciar</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

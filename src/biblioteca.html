@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca de Golpes — AntiGolpe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">AG</span>
+        <span>AntiGolpe</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal">☰ Menu</button>
+      <nav class="nav-principal" id="nav-principal" aria-label="Navegação principal" data-open="false">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="simulador.html">Simulador</a></li>
+          <li><a href="biblioteca.html" aria-current="page">Biblioteca</a></li>
+          <li><a href="verificador.html">Verificar link</a></li>
+          <li><a href="painel.html">Painel</a></li>
+        </ul>
+      </nav>
+      <div class="acoes-header">
+        <a class="btn btn--secundario" href="login.html">Entrar</a>
+        <a class="btn btn--primario" href="cadastro.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <header class="stack">
+        <h1>Biblioteca de Golpes</h1>
+        <p class="text-muted">Explore tipos de golpe, entenda como funcionam e veja como se proteger.</p>
+      </header>
+
+      <section aria-labelledby="filtros-titulo" class="card mt-4">
+        <h2 id="filtros-titulo" class="visually-hidden">Filtros de busca</h2>
+        <form class="form" id="form-filtros" role="search" method="get" action="#">
+          <div class="campo">
+            <label for="q">Buscar por palavra-chave</label>
+            <input type="search" id="q" name="q" placeholder="ex.: boleto, PIX, falso parente…">
+            <p class="campo__ajuda">A busca considera título, resumo e categoria. Filtra enquanto você digita.</p>
+          </div>
+
+          <fieldset>
+            <legend>Categoria</legend>
+            <div class="grid grid-2">
+              <label class="campo--checkbox"><input type="checkbox" name="cat" value="phishing"> Phishing bancário</label>
+              <label class="campo--checkbox"><input type="checkbox" name="cat" value="boleto"> Falso boleto</label>
+              <label class="campo--checkbox"><input type="checkbox" name="cat" value="whatsapp"> Clonagem de WhatsApp</label>
+              <label class="campo--checkbox"><input type="checkbox" name="cat" value="marketplace"> Falso marketplace</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Nível de risco</legend>
+            <div class="grid grid-4">
+              <label class="campo--checkbox"><input type="radio" name="risco" value="" checked> Todos</label>
+              <label class="campo--checkbox"><input type="radio" name="risco" value="alto"> Alto</label>
+              <label class="campo--checkbox"><input type="radio" name="risco" value="medio"> Médio</label>
+              <label class="campo--checkbox"><input type="radio" name="risco" value="baixo"> Baixo</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <button type="button" id="btn-limpar" class="btn btn--secundario">Limpar filtros</button>
+          </div>
+        </form>
+      </section>
+
+      <section aria-labelledby="resultados-titulo" class="stack mt-6">
+        <header>
+          <h2 id="resultados-titulo">Resultados</h2>
+          <p class="text-muted" id="contador-resultados">Carregando…</p>
+        </header>
+
+        <div id="lista-artigos" class="grid grid-3"></div>
+
+        <div id="sem-resultados" class="card text-center" hidden>
+          <h3 class="mt-0">Nenhum artigo encontrado</h3>
+          <p class="text-muted">Tente remover alguns filtros ou buscar por outro termo.</p>
+          <button type="button" id="btn-limpar-vazio" class="btn btn--secundario">Limpar filtros</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <section>
+          <h2>AntiGolpe</h2>
+          <p>Plataforma educativa e colaborativa de prevenção a golpes digitais.</p>
+        </section>
+        <nav aria-labelledby="footer-recursos">
+          <h2 id="footer-recursos">Recursos</h2>
+          <ul>
+            <li><a href="simulador.html">Simulador</a></li>
+            <li><a href="biblioteca.html">Biblioteca</a></li>
+            <li><a href="verificador.html">Verificar link</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-conta">
+          <h2 id="footer-conta">Conta</h2>
+          <ul>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="painel.html">Painel</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-sobre">
+          <h2 id="footer-sobre">Sobre</h2>
+          <ul>
+            <li><a href="admin.html">Área administrativa</a></li>
+            <li><a href="#">Como denunciar</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 AntiGolpe — Projeto acadêmico</span>
+        <span>Feito com Node.js · Express · Prisma</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/biblioteca.js" defer></script>
+</body>
+</html>
