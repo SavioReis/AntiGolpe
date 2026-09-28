@@ -124,4 +124,3 @@ Etapa 01 (proposta) concluída.
 Etapa 02 (HTML semântico) concluída.
 Etapa 03 (CSS responsivo) concluída.
 Etapa 04 (JavaScript) concluída.
-Etapa 05 (backend) ainda não iniciada.
