@@ -10,6 +10,10 @@
   margin-inline: auto;
   padding-inline: var(--esp-4);
 }
+/* Containers estreitos para telas de formulário (antes era style inline) */
+.container--estreito { max-width: 560px; }
+.container--login    { max-width: 480px; }
+
 
 main {
   padding: var(--esp-6) 0 var(--esp-8);
