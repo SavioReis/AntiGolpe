@@ -93,6 +93,11 @@
   border-radius: var(--raio);
   padding: var(--esp-5);
   text-align: center;
+  /* No HTML o <dt> (rótulo) vem antes do <dd> (valor), como manda a
+     semântica de <dl>. column-reverse mostra o valor em cima. */
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
 }
 .stat__valor {
   font-size: 2rem;
@@ -264,3 +269,10 @@ textarea[aria-invalid="true"] {
 .forca-senha--forte { color: var(--verde); }
 
 .campo__ajuda--alerta { color: var(--amarelo); font-weight: 600; }
+/* Linha de botões lado a lado que quebra em telas pequenas
+   (usada na tela de resultado do simulador) */
+.acoes-linha {
+  display: flex;
+  gap: var(--esp-3);
+  flex-wrap: wrap;
+}
