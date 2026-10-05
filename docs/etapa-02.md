@@ -18,7 +18,7 @@ autenticação real foi implementada — o objetivo é estruturar as interfaces.
 | F3 — Biblioteca de golpes | `biblioteca.html`, `artigo.html` |
 | F4 — Verificador de link | `verificador.html` |
 | F5 — Painel de progresso | `painel.html` |
-| F6 — Ranking | representado por card em `painel.html` (página dedicada virá na Etapa 03) |
+| F6 — Ranking | representado por card em `painel.html` (a página dedicada depende de dados reais de vários usuários, então fica para quando houver backend) |
 | F7 — Denúncia colaborativa | formulário em `painel.html` |
 | F8 — Módulo administrativo | `admin.html` |
 | Landing / apresentação | `index.html` |
@@ -47,7 +47,7 @@ Total: **9 páginas**, acima do mínimo de 3 exigido.
 
 ### 3.1 Semântica estrutural
 
-- **`<header>` de site** com `nav` + `aria-label="Navegação principal"` — o mesmo bloco se repete em todas as páginas, o que facilita a migração para *partials* do EJS na Etapa 03.
+- **`<header>` de site** com `nav` + `aria-label="Navegação principal"` — o mesmo bloco se repete em todas as páginas, o que facilita extrair esse trecho para um template/partial quando houver renderização no servidor.
 - **`<main>` único por página**, envolvendo apenas o conteúdo específico da tela — nunca o cabeçalho nem o rodapé.
 - **`<section>` para agrupar conteúdo temático** (hero, estatísticas, como funciona). Cada `<section>` referencia seu próprio título via `aria-labelledby`.
 - **`<article>` para conteúdo autocontido e reutilizável**: cards de golpes, cenário do simulador, artigo da biblioteca.
@@ -83,3 +83,33 @@ Total: **9 páginas**, acima do mínimo de 3 exigido.
 - **`lang="pt-BR"`** em todas as páginas.
 
 ### 3.6 Organização de arquivos
+
+Os arquivos estão separados por tipo dentro de `src/`:
+
+```
+src/
+├── index.html, simulador.html, biblioteca.html, artigo.html,
+│   verificador.html, login.html, cadastro.html, painel.html, admin.html
+├── css/   ← estilos (detalhados na Etapa 03)
+└── js/    ← scripts (detalhados na Etapa 04)
+```
+
+- **Um arquivo HTML por tela.** Cada página corresponde a uma interface da
+  proposta (T1 a T7). Isso deixa claro qual arquivo editar para mudar
+  uma tela.
+- **Nomes em português, minúsculos e sem acento** (`verificador.html`,
+  não `Verificador de Link.html`), para evitar problemas de URL e de
+  diferença entre maiúsculas e minúsculas no servidor.
+- **Caminhos relativos** (`css/style.css`, `js/main.js`, `painel.html`):
+  o site funciona abrindo direto do disco ou servido por qualquer
+  servidor estático, sem configuração.
+- **Um único ponto de entrada de CSS** (`css/style.css`) incluído em todas
+  as páginas, para que nenhuma página fique com estilo diferente por
+  esquecer um arquivo.
+- **Scripts no fim do `<body>` com `defer`**, para que o HTML seja
+  exibido antes de o JavaScript carregar.
+
+> Observação: na época desta etapa a pasta se chamava `public/`. Ela foi
+> renomeada para `src/` para seguir a estrutura padrão pedida nas regras
+> da disciplina.
+

@@ -190,13 +190,30 @@ domínios mais consultados).
 
 ---
 
+### Alterações em relação ao plano original
+
+Durante as etapas 02 a 04 algumas escolhas do cliente mudaram. As
+regras da disciplina permitem trocar tecnologias desde que a solução
+continue coerente; as mudanças e os motivos são:
+
+| Planejado | Usado de fato | Motivo |
+|-----------|---------------|--------|
+| **Tailwind CSS** | CSS próprio, dividido em 7 arquivos (`src/css/`) | A Etapa 03 avalia Flexbox, Grid e media queries escritos pelo aluno. Com Tailwind, isso ficaria escondido em classes utilitárias prontas. |
+| **EJS** (templates no servidor) | HTML estático em `src/` | Ainda não há servidor. O EJS volta a ser avaliado quando o backend Express entrar; o cabeçalho e o rodapé, repetidos em todas as páginas, são os primeiros candidatos a virar *partials*. |
+| **Chart.js** (gráficos do painel) | Ainda não usado | O painel mostra dados fictícios em tabela. O gráfico só faz sentido com dados reais vindos da API. |
+
+O servidor (Node.js + Express) e a persistência (Prisma + SQLite/PostgreSQL)
+continuam como planejado para as próximas etapas.
+
+---
+
 ## 10. Arquitetura da solução
 
 ```mermaid
 flowchart TB
     subgraph Cliente["🖥️ Cliente (Navegador)"]
         UI[HTML + CSS + JS]
-        CH[Chart.js]
+        CH[Chart.js<br/>previsto]
     end
 
     subgraph Servidor["⚙️ Servidor Node.js"]

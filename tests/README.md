@@ -24,8 +24,18 @@ debounce, que agrupa chamadas consecutivas.
 storage, que grava, lê e remove do localStorage.
 formatarData, que transforma ISO em data brasileira.
 
-Testes dos módulos que manipulam DOM (simulador, biblioteca, auth) vêm
-conforme o projeto evoluir.
+O simulador (tests/simulador.test.js) também é testado. O teste monta o
+HTML mínimo da página, carrega utils.js e simulador.js e clica nos
+botões como um usuário faria:
+
+a rodada tem 10 perguntas;
+a categoria não aparece antes da resposta;
+o feedback aparece depois de responder;
+o resultado final aparece após 10 respostas;
+encerrar no meio calcula o resultado sobre as perguntas respondidas.
+
+Testes da biblioteca e dos formulários de login e cadastro vêm conforme
+o projeto evoluir.
 
 ## Por que testar
 

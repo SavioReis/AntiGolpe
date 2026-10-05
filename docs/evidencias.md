@@ -1,66 +1,58 @@
 # Evidências — AntiGolpe
 
 Índice de todas as capturas de tela do projeto. Cada etapa tem sua
-própria pasta dentro de docs/evidencias/.
+própria pasta dentro de `docs/evidencias/`.
 
 ## Estrutura
 
+```
 docs/evidencias/
-├── desktop/       capturas em 1440×900 (Etapa 03)
-├── tablet/        capturas em 768×1024 (Etapa 03)
-├── smartphone/    capturas em 375×812 (Etapa 03)
-└── etapa-04/      capturas das funcionalidades interativas
-
-## Como capturar
-
-Rodar npm run serve. Abrir o navegador. Apertar F12. Ativar o modo
-device toolbar com Ctrl+Shift+M ou Cmd+Shift+M. Escolher a resolução.
-Capturar. Salvar com o nome padronizado.
+├── etapa-03/   9 capturas: 3 telas × 3 tamanhos (responsividade)
+└── etapa-04/   16 capturas das funcionalidades interativas
+```
 
 ## Etapa 03 — Interface responsiva
 
-Desktop, resolução 1440×900. Capturar as nove páginas: index,
-simulador, biblioteca, artigo, verificador, painel, admin, login e
-cadastro. Nomes: 01-index.png, 02-simulador.png e assim por diante.
+Mesmas três interfaces da Etapa 02 em três tamanhos. Capturas de página
+inteira, na largura exata de cada tamanho.
 
-Tablet, resolução 768×1024. Capturar index, simulador, painel e admin,
-que são as páginas mais densas.
+| Interface | Desktop 1440 × 900 | Tablet 768 × 1024 | Smartphone 390 × 844 |
+|-----------|--------------------|-------------------|----------------------|
+| Tela 01 — Início | `desktop-tela-01.png` | `tablet-tela-01.png` | `smartphone-tela-01.png` |
+| Tela 02 — Simulador | `desktop-tela-02.png` | `tablet-tela-02.png` | `smartphone-tela-02.png` |
+| Tela 03 — Biblioteca | `desktop-tela-03.png` | `tablet-tela-03.png` | `smartphone-tela-03.png` |
 
-Smartphone, resolução 375×812. Capturar as mesmas quatro páginas do
-tablet.
+Detalhes em `docs/etapa-03.md`, seção 8.
 
 ## Etapa 04 — Interatividade
 
-Dezesseis capturas, cobrindo as cinco funcionalidades interativas.
+Capturas em desktop (1440 px de largura).
 
-Simulador: 01-simulador-pergunta.png, 02-simulador-feedback-correto.png,
-03-simulador-feedback-errado.png, 04-simulador-resultado-final.png.
+| Arquivo | Funcionalidade | O que mostra |
+|---------|----------------|--------------|
+| `01-simulador-pergunta.png` | Simulador | Pergunta em exibição, progresso "1 de 10" |
+| `02-simulador-feedback-correto.png` | Simulador | Feedback de acerto |
+| `03-simulador-feedback-errado.png` | Simulador | Feedback de erro |
+| `04-simulador-resultado-final.png` | Simulador | Resultado com tabela por categoria |
+| `05-verificador-suspeito.png` | Verificador | Veredito "Suspeito" |
+| `06-verificador-seguro.png` | Verificador | Veredito "Seguro" (subdomínio `www.`) |
+| `07-verificador-erro-url.png` | Verificador | Erro: URL sem `https://` |
+| `08-verificador-historico.png` | Verificador | Histórico mantido após recarregar a página |
+| `09-biblioteca-filtros.png` | Biblioteca | Filtros "Phishing bancário" + risco "Alto" |
+| `10-biblioteca-vazio.png` | Biblioteca | Busca sem resultado ("xyzabc") |
+| `11-cadastro-erros.png` | Cadastro | Formulário enviado vazio |
+| `12-cadastro-senha-forte.png` | Cadastro | Medidor de força: "Forte" |
+| `13-cadastro-sucesso.png` | Cadastro | Painel de sucesso |
+| `14-login-erros.png` | Login | E-mail inválido e senha curta |
+| `15-denuncia-erros.png` | Denúncia | Campos obrigatórios e descrição curta |
+| `16-denuncia-sucesso.png` | Denúncia | Confirmação "PENDENTE" |
 
-Verificador: 05-verificador-suspeito.png, 06-verificador-seguro.png,
-07-verificador-erro-url.png, 08-verificador-historico.png.
+## Como as capturas foram feitas
 
-Biblioteca: 09-biblioteca-filtros.png, 10-biblioteca-vazio.png.
+Com o Chromium controlado pelo Playwright, abrindo os arquivos de `src/`
+em cada tamanho de tela e executando as ações descritas no roteiro de
+testes do `docs/etapa-04.md`.
 
-Cadastro e login: 11-cadastro-erros.png, 12-cadastro-senha-forte.png,
-13-cadastro-sucesso.png, 14-login-erros.png.
-
-Denúncia: 15-denuncia-erros.png, 16-denuncia-sucesso.png.
-
-## Estado
-
-Nenhuma captura foi feita ainda. Precisa ser feito antes da auditoria do
-meio do semestre.
-
-## Automação opcional
-
-Dá pra automatizar com Playwright:
-
-    npx playwright install chromium
-    npx playwright screenshot --viewport-size=1440,900 src/index.html docs/evidencias/desktop/01-index.png
-
-Repetir trocando resolução e arquivo de saída.
-
-## Convenção de nomes
-
-Prefixo numérico com dois dígitos, nome em minúsculas sem acento, hífen
-entre as partes. Formato: NN-pagina-estado.png.
+Para refazer à mão: abrir a página no Chrome, `F12`, modo dispositivo
+(`Ctrl+Shift+M`), digitar a resolução em "Dimensions" e usar o menu
+⋮ → "Capture full size screenshot". Salvar com o mesmo nome da tabela.

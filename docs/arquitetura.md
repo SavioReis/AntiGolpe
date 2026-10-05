@@ -40,6 +40,14 @@ demo local, sem exigir servidor de banco de dados rodando.
 Para testes, uso Vitest com jsdom. Isso permite rodar a lógica do
 navegador dentro do Node sem precisar abrir um browser de verdade.
 
+## Mudanças em relação à proposta
+
+A proposta (docs/proposta.md) previa Tailwind, EJS e Chart.js no
+cliente. Troquei Tailwind por CSS próprio porque a Etapa 03 avalia
+justamente Flexbox, Grid e media queries escritos à mão. EJS e Chart.js
+ficaram para quando houver servidor e dados reais. A tabela completa
+com os motivos está na seção 9 da proposta.
+
 ## Estrutura de pastas
 
 src/ guarda tudo que o navegador consome: HTML, CSS e JS.
@@ -138,8 +146,12 @@ helmet e rate limiting.
 
 ## Testes
 
-Hoje cobrem utils.js: validarEmail, escaparHtml, normalizarUrl,
-debounce, storage e formatarData. A estratégia é evoluir em três
+Hoje cobrem utils.js (validarEmail, escaparHtml, normalizarUrl,
+debounce, storage e formatarData) e o simulador (tests/simulador.test.js).
+O teste do simulador monta o HTML mínimo da página no jsdom, carrega o
+script e clica nos botões como um usuário faria. Ele verifica que a
+rodada tem 10 perguntas, que a categoria não aparece antes da resposta e
+que encerrar no meio calcula o resultado só sobre o que foi respondido. A estratégia é evoluir em três
 camadas: unitário (atual), integração com Supertest na próxima etapa e
 end-to-end mais adiante.
 

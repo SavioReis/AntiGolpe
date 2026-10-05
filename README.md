@@ -12,8 +12,8 @@ e uma base colaborativa (artigos + verificador de links).
 
 ## O que tem
 
-- Simulador de golpes: 10 cenários sorteados por rodada, pontuação,
-  feedback a cada resposta e resumo final por categoria.
+- Simulador de golpes: 10 cenários sorteados por rodada (de uma base de
+  14), pontuação, feedback a cada resposta e resumo final por categoria.
 - Verificador de links: cola uma URL e o sistema classifica como
   suspeito, seguro ou desconhecido. Guarda histórico no navegador.
 - Biblioteca: busca e filtros em tempo real por categoria e risco.
@@ -54,13 +54,16 @@ antigolpe/
 │   ├── etapa-03.md
 │   ├── etapa-04.md
 │   └── evidencias/
+│       ├── etapa-03/   (9 capturas)
+│       └── etapa-04/   (16 capturas)
 ├── src/
 │   ├── *.html
 │   ├── css/
 │   └── js/
 └── tests/
     ├── README.md
-    └── utils.test.js
+    ├── utils.test.js
+    └── simulador.test.js
 
 ## Como rodar
 
@@ -88,7 +91,8 @@ Em modo watch:
 ## Roteiro rápido pra testar
 
 Simulador: abrir src/simulador.html, responder as 10 perguntas, ver o
-resumo final e clicar em "Jogar novamente".
+resumo final e clicar em "Jogar novamente". Repare que a categoria do
+cenário só aparece depois da resposta.
 
 Verificador: abrir src/verificador.html e testar três URLs.
 https://bx-seguranca-login.com/login dá suspeito.
@@ -115,8 +119,23 @@ simulam sucesso.
 
 Não tem testes de integração entre módulos nem testes end-to-end.
 
-Os documentos das etapas 02 e 03 mencionam a pasta public/, que foi
-renomeada para src/ quando a estrutura do repositório foi ajustada.
+A página de artigo é estática: todos os links "Ler artigo" abrem o mesmo
+conteúdo de exemplo. O conteúdo por id virá do backend.
+
+O ranking (F6) ainda não tem página própria; aparece como card no painel.
+
+Os números do painel e da página inicial são fictícios.
+
+## Versões
+
+Cada entrega tem uma tag Git: etapa-01, etapa-02, etapa-03 e etapa-04.
+As etapas 01 a 04 foram versionadas juntas, então as quatro tags apontam
+para o mesmo commit. A partir da etapa 05 cada entrega terá seu próprio
+commit e sua própria tag.
+
+Para ver o código de uma entrega:
+
+    git checkout etapa-04
 
 ## Status das etapas
 

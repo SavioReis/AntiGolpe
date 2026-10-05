@@ -19,18 +19,24 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 ### F1 — Simulador de Golpes (jogo completo)
 
 **Como funciona:**
-1. Ao carregar `simulador.html`, o JS embaralha o array `CENARIOS` e seleciona 10.
+1. Ao carregar `simulador.html`, o JS embaralha o array `CENARIOS` (14 cenários:
+   8 golpes e 6 mensagens legítimas) e seleciona 10.
 2. Renderiza o cenário atual (canal, remetente, conteúdo) e dois botões de decisão.
+   A **categoria** do cenário só aparece depois da resposta, junto com o
+   feedback; mostrá-la antes entregaria o gabarito (ex.: "Comunicação legítima").
 3. Ao clicar em "É golpe" ou "É legítimo", o sistema compara com `ehGolpe`,
    registra a resposta, atualiza a pontuação e exibe um painel de feedback com
    a explicação e os sinais de alerta.
-4. O botão "Próxima pergunta" avança. Ao final, uma tela de resultado mostra:
+4. O botão "Próxima pergunta" avança. O botão "Encerrar rodada" pede confirmação
+   e finaliza antecipadamente; nesse caso o resultado é calculado só sobre as
+   perguntas respondidas (ex.: "2 de 3"), e não sobre 10.
+5. Ao final, uma tela de resultado mostra:
    - pontuação total, acertos, erros e aproveitamento;
    - tabela com desempenho agrupado por categoria (via `reduce`);
    - botão "Jogar novamente" que reinicia o estado.
-5. A barra `<progress>` é atualizada a cada pergunta.
+6. A barra `<progress>` é atualizada a cada pergunta.
 
-**Arquivos envolvidos:** `public/simulador.html`, `public/js/simulador.js`, `public/js/utils.js`
+**Arquivos envolvidos:** `src/simulador.html`, `src/js/simulador.js`, `src/js/utils.js`
 
 **Conceitos aplicados:**
 - Array de objetos (`CENARIOS`);
@@ -54,7 +60,7 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 5. Cada consulta é adicionada a um histórico em `localStorage` (limite de 10 itens).
 6. O histórico é renderizado em tabela e pode ser limpo pelo usuário.
 
-**Arquivos envolvidos:** `public/verificador.html`, `public/js/verificador.js`, `public/js/utils.js`
+**Arquivos envolvidos:** `src/verificador.html`, `src/js/verificador.js`, `src/js/utils.js`
 
 **Conceitos aplicados:**
 - Objeto `ns.storage` com `get`/`set`/`remove` seguros;
@@ -62,7 +68,7 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 - `Array.prototype.unshift` + `slice` para gerenciar o histórico;
 - `new URL()` para parsing de URL;
 - Renderização dinâmica de tabela via `map().join('')`;
-- Delegação indireta de eventos (botão "Limpar histórico" recriado a cada render).
+- O botão "Limpar histórico" é recriado a cada renderização, então o listener de `click` é registrado de novo logo após o `innerHTML`.
 
 ---
 
@@ -78,7 +84,7 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 6. O contador de resultados é atualizado dinamicamente.
 7. Digitação tem **debounce de 200ms** para evitar re-renderizações a cada tecla.
 
-**Arquivos envolvidos:** `public/biblioteca.html`, `public/js/biblioteca.js`, `public/js/utils.js`
+**Arquivos envolvidos:** `src/biblioteca.html`, `src/js/biblioteca.js`, `src/js/utils.js`
 
 **Conceitos aplicados:**
 - `Array.prototype.filter` com múltiplas condições;
@@ -100,14 +106,14 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 6. Se tudo estiver válido, um painel de sucesso é exibido (simulação — não há backend).
 7. No cadastro, um medidor de força de senha é atualizado enquanto o usuário digita.
 
-**Arquivos envolvidos:** `public/login.html`, `public/cadastro.html`, `public/js/auth.js`, `public/js/utils.js`
+**Arquivos envolvidos:** `src/login.html`, `src/cadastro.html`, `src/js/auth.js`, `src/js/utils.js`
 
 **Conceitos aplicados:**
 - Funções `ns.mostrarErro`, `ns.limparErro`, `ns.limparTodosErros`;
 - Regex para validar e-mail;
 - Validações compostas (senha com letras + números, senhas coincidentes, termos aceitos);
 - Estado de força de senha calculado por pontuação;
-- Delegação de eventos com `addEventListener('input')`.
+- Evento `input` em cada campo para limpar o erro assim que o usuário corrige o valor.
 
 ---
 
@@ -120,7 +126,7 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 4. Ao enviar, valida categoria, canal e descrição (mínimo 20 caracteres).
 5. Erros são exibidos inline; o formulário é limpo após sucesso.
 
-**Arquivos envolvidos:** `public/painel.html`, `public/js/denuncia.js`, `public/js/utils.js`
+**Arquivos envolvidos:** `src/painel.html`, `src/js/denuncia.js`, `src/js/utils.js`
 
 **Conceitos aplicados:**
 - Manipulação de `textContent` em tempo real;
@@ -132,16 +138,19 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 
 ## 3. Matriz de evidências
 
+Os números dos prints (`01` a `16`) se referem aos arquivos em
+`docs/evidencias/etapa-04/` (lista completa na seção 7).
+
 | Requisito | Funcionalidade relacionada | Arquivo(s) | Evidência |
 |-----------|----------------------------|------------|-----------|
-| **Manipulação do DOM** | Simulador, Verificador, Biblioteca, Auth, Denúncia | `js/simulador.js`, `js/verificador.js`, `js/biblioteca.js`, `js/auth.js`, `js/denuncia.js` | Uso de `innerHTML`, `textContent`, `querySelector`, `setAttribute`, `classList` em todas as funções `renderizar*()` e `mostrarErro()` |
-| **Tratamento de eventos** | Cliques no simulador, submits de formulários, digitação em campos de busca, eventos `change` em filtros | `js/simulador.js`, `js/verificador.js`, `js/biblioteca.js`, `js/auth.js`, `js/denuncia.js` | Chamadas a `addEventListener('click' / 'submit' / 'input' / 'change' / 'reset')` em cada módulo |
-| **Validação de formulários** | Cadastro, login, verificador de URL, denúncia | `js/auth.js`, `js/verificador.js`, `js/denuncia.js` | Blocos `if` com múltiplas regras + `ns.mostrarErro()` em cada handler de submit |
-| **Alteração dinâmica da interface** | Renderização de cenário + feedback, resultado da URL, lista filtrada, mensagens de erro | `js/simulador.js` (`renderizarCenario`, `renderizarFeedback`), `js/verificador.js` (`renderizarResultado`), `js/biblioteca.js` (`renderizarCards`) | Substituição completa de blocos via `innerHTML` com template strings |
+| **Manipulação do DOM** | Simulador, Verificador, Biblioteca, Auth, Denúncia | `js/simulador.js`, `js/verificador.js`, `js/biblioteca.js`, `js/auth.js`, `js/denuncia.js` | Uso de `innerHTML`, `textContent`, `querySelector`, `setAttribute`, `classList` em todas as funções `renderizar*()` e `mostrarErro()` — prints `01`, `02`, `05` |
+| **Tratamento de eventos** | Cliques no simulador, submits de formulários, digitação em campos de busca, eventos `change` em filtros | `js/simulador.js`, `js/verificador.js`, `js/biblioteca.js`, `js/auth.js`, `js/denuncia.js` | Chamadas a `addEventListener('click' / 'submit' / 'input' / 'change' / 'reset')` em cada módulo — prints `02`, `09`, `12` |
+| **Validação de formulários** | Cadastro, login, verificador de URL, denúncia | `js/auth.js`, `js/verificador.js`, `js/denuncia.js` | Blocos `if` com múltiplas regras + `ns.mostrarErro()` em cada handler de submit — prints `07`, `11`, `14`, `15` |
+| **Alteração dinâmica da interface** | Renderização de cenário + feedback, resultado da URL, lista filtrada, mensagens de erro | `js/simulador.js` (`renderizarCenario`, `renderizarFeedback`), `js/verificador.js` (`renderizarResultado`), `js/biblioteca.js` (`renderizarCards`) | Substituição completa de blocos via `innerHTML` com strings montadas por concatenação (`+`) — prints `02`, `03`, `04`, `09` |
 | **Uso de funções** | Todo o projeto | Todos os arquivos em `js/` | Declarações `function nome() {}` e IIFEs com `(function (ns) { ... })(window.AntiGolpe)` |
-| **Uso de arrays** | Cenários, artigos, domínios, histórico, categorias | `js/simulador.js` (`CENARIOS`), `js/biblioteca.js` (`ARTIGOS`), `js/verificador.js` (`DOMINIOS_SUSPEITOS`, `DOMINIOS_CONFIAVEIS`) | Arrays constantes no topo de cada módulo |
-| **Métodos de iteração** | Embaralhar, filtrar, buscar, agregar, renderizar | `js/simulador.js` (`CENARIOS.find`, `respostas.reduce`, `sinais.map`), `js/biblioteca.js` (`ARTIGOS.filter`, `artigos.map`), `js/verificador.js` (`DOMINIOS_SUSPEITOS.find`, `historico.map`) | Uso de `map`, `filter`, `reduce`, `find`, `forEach`, `Array.from` |
-| **Tratamento de situações inválidas** | URL vazia/malformada, senha fraca, senhas diferentes, termos não aceitos, busca sem resultados, descrição curta | `js/verificador.js`, `js/auth.js`, `js/denuncia.js`, `js/biblioteca.js` | `ns.mostrarErro()` com mensagens específicas + empty state da biblioteca (`#sem-resultados`) |
+| **Uso de arrays** | Cenários, artigos, domínios, histórico, categorias | `js/simulador.js` (`CENARIOS`), `js/biblioteca.js` (`ARTIGOS`), `js/verificador.js` (`DOMINIOS_SUSPEITOS`, `DOMINIOS_CONFIAVEIS`) | Arrays constantes no topo de cada módulo — prints `04`, `08` |
+| **Métodos de iteração** | Embaralhar, filtrar, buscar, agregar, renderizar | `js/simulador.js` (`CENARIOS.find`, `respostas.reduce`, `sinais.map`), `js/biblioteca.js` (`ARTIGOS.filter`, `artigos.map`), `js/verificador.js` (`DOMINIOS_SUSPEITOS.find`, `historico.map`) | Uso de `map`, `filter`, `reduce`, `find`, `forEach`, `Array.from` — prints `04` (tabela por categoria via `reduce`), `09` (`filter`) |
+| **Tratamento de situações inválidas** | URL vazia/malformada, senha fraca, senhas diferentes, termos não aceitos, busca sem resultados, descrição curta | `js/verificador.js`, `js/auth.js`, `js/denuncia.js`, `js/biblioteca.js` | `ns.mostrarErro()` com mensagens específicas + empty state da biblioteca (`#sem-resultados`) — prints `07`, `10`, `11`, `15` |
 
 ---
 
@@ -182,12 +191,15 @@ resolvidas em JavaScript puro, sem bibliotecas externas.
 ### 6.1 Como executar
 
 ```bash
-npx serve public
-# ou
-python -m http.server 8000 --directory public
+npm install        # só na primeira vez
+npm run serve      # abre em http://localhost:3000
+# ou, sem Node:
+python -m http.server 8000 --directory src   # http://localhost:8000
 ```
 
-Abrir `http://localhost:3000` (ou `:8000`) no navegador.
+Também funciona abrindo `src/index.html` direto no navegador (duplo clique).
+
+Para rodar os testes automatizados: `npm test`.
 
 ### 6.2 Roteiro de testes
 
@@ -233,7 +245,7 @@ Abrir `http://localhost:3000` (ou `:8000`) no navegador.
 
 ## 7. Evidências (capturas de tela)
 
-Salvar em `docs/evidencias/etapa-04/` com a seguinte convenção de nomes:
+As 16 capturas estão em `docs/evidencias/etapa-04/` (desktop, 1440 px de largura):
 
 ```
 01-simulador-pergunta.png           → estado normal (pergunta em exibição)
@@ -259,7 +271,7 @@ Salvar em `docs/evidencias/etapa-04/` com a seguinte convenção de nomes:
 ## 8. Estrutura de arquivos
 
 ```
-public/
+src/
 ├── js/
 │   ├── utils.js         ← helpers compartilhados (carregado por todas as páginas)
 │   ├── main.js          ← menu mobile + link ativo
@@ -315,3 +327,20 @@ public/
 - [x] `docs/etapa-04.md` — este documento.
 - [x] Matriz de evidências — seção 3.
 - [x] Instruções de teste — seção 6.
+- [x] Evidências do funcionamento — 16 capturas na seção 7.
+- [x] Testes automatizados — `tests/utils.test.js` (24) e `tests/simulador.test.js` (5).
+
+---
+
+## 11. Correções feitas após a primeira versão da entrega
+
+| Problema | Correção | Arquivo |
+|----------|----------|---------|
+| O simulador mostrava a categoria antes da resposta, entregando o gabarito ("Comunicação legítima") | Categoria só aparece no feedback | `src/js/simulador.js` |
+| A rodada dizia 10 perguntas, mas só existiam 8 cenários ("Pergunta 1 de 8") | Adicionados 6 cenários (total 14) | `src/js/simulador.js` |
+| "Encerrar rodada" no meio calculava acertos sobre 10 | Total passa a ser `estado.respostas.length` | `src/js/simulador.js` |
+| `<dd>` antes de `<dt>` nas estatísticas (HTML inválido) | `<dt>` primeiro; `flex-direction: column-reverse` mantém o visual | `src/*.html`, `src/js/simulador.js`, `src/css/components.css` |
+
+Os três primeiros bugs ganharam testes em `tests/simulador.test.js`, que
+falhariam se o problema voltasse.
+
