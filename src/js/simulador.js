@@ -102,6 +102,78 @@
         'Direciona ao site oficial, sem links encurtados',
         'Não pede senha nem dados de cartão'
       ]
+    },
+    {
+      id: 9, canal: 'WhatsApp', remetente: 'Loja de Eletrônicos (perfil sem verificação)',
+      categoria: 'Falso marketplace',
+      conteudo: 'iPhone 15 lacrado por R$ 1.499! Últimas 3 unidades. Pagamento só via PIX, envio em 24h. Chama no privado antes que acabe!',
+      ehGolpe: true,
+      explicacao: 'Preço muito abaixo do mercado, pressão de estoque e pagamento exclusivo via PIX são a combinação clássica de loja falsa. Depois do PIX, o perfil some e não há como estornar.',
+      sinais: [
+        'Preço muito abaixo do valor de mercado',
+        'Escassez artificial ("últimas 3 unidades")',
+        'Aceita apenas PIX, sem intermediador de pagamento'
+      ]
+    },
+    {
+      id: 10, canal: 'SMS', remetente: '29099',
+      categoria: 'Comunicação legítima',
+      conteudo: 'Seu codigo de verificacao e 482913. Nao compartilhe este codigo com ninguem.',
+      ehGolpe: false,
+      explicacao: 'Código enviado logo após o próprio usuário solicitar login. A mensagem não tem link e ainda orienta a não compartilhar o código. O golpe aconteceria só se alguém pedisse esse código depois.',
+      sinais: [
+        'Chega logo após uma ação feita pelo próprio usuário',
+        'Não contém link',
+        'Orienta a não compartilhar o código'
+      ]
+    },
+    {
+      id: 11, canal: 'E-mail', remetente: 'seguranca@nubank-verificacao.com',
+      categoria: 'Phishing bancário',
+      conteudo: 'Sua conta será bloqueada em 2 horas por atividade incomum. Confirme seus dados clicando no botão abaixo para evitar o bloqueio.',
+      ehGolpe: true,
+      explicacao: 'O domínio "nubank-verificacao.com" não pertence ao banco. Ameaça de bloqueio com prazo curto é usada para fazer a vítima agir sem pensar e digitar seus dados em um site falso.',
+      sinais: [
+        'Domínio que imita o nome do banco, mas não é o oficial',
+        'Ameaça de bloqueio com prazo curto',
+        'Pedido para "confirmar dados" por link'
+      ]
+    },
+    {
+      id: 12, canal: 'Ligação', remetente: '0800 do banco (você que ligou)',
+      categoria: 'Comunicação legítima',
+      conteudo: 'Você ligou para o número que está atrás do seu cartão. O atendente confirma seu nome e pergunta qual compra você não reconhece, sem pedir senha.',
+      ehGolpe: false,
+      explicacao: 'Quando é você quem liga para o número oficial impresso no cartão, o canal é seguro. O atendente pode confirmar dados básicos, mas nunca pede senha completa ou token.',
+      sinais: [
+        'Foi você quem iniciou o contato',
+        'Número oficial impresso no cartão',
+        'Não pede senha nem código do token'
+      ]
+    },
+    {
+      id: 13, canal: 'Instagram (direct)', remetente: '@sorteios_oficial_br',
+      categoria: 'Falso sorteio',
+      conteudo: 'Parabéns! Você foi sorteado e ganhou um vale de R$ 5.000. Para liberar o prêmio, pague a taxa de envio de R$ 39,90 pelo link.',
+      ehGolpe: true,
+      explicacao: 'Sorteios de verdade não cobram taxa para liberar prêmio. Além disso, você não participou de sorteio nenhum: o perfil escolhe vítimas aleatórias.',
+      sinais: [
+        'Prêmio de um sorteio do qual você não participou',
+        'Cobrança de "taxa" para liberar o prêmio',
+        'Perfil genérico, sem ligação com marca conhecida'
+      ]
+    },
+    {
+      id: 14, canal: 'Notificação do app', remetente: 'gov.br',
+      categoria: 'Comunicação legítima',
+      conteudo: 'Novo acesso à sua conta gov.br pelo navegador Chrome em Goiânia/GO. Se foi você, ignore. Se não foi, altere sua senha pelo aplicativo.',
+      ehGolpe: false,
+      explicacao: 'Aviso de segurança dentro do próprio aplicativo oficial, sem link externo, orientando a agir pelo app. É o comportamento esperado de um serviço legítimo.',
+      sinais: [
+        'Chega pelo aplicativo oficial instalado',
+        'Não contém link externo',
+        'Orienta a agir pelo próprio app, não por mensagem'
+      ]
     }
   ];
 
@@ -147,7 +219,7 @@
     const atual = Math.min(estado.indice + 1, total);
 
     if (estado.finalizada) {
-      progressoTexto.textContent = 'Rodada finalizada · ' + estado.acertos + '/' + total + ' acertos';
+      progressoTexto.textContent = 'Rodada finalizada · ' + estado.acertos + '/' + estado.respostas.length + ' acertos';
       progressoBarra.value = total;
     } else {
       progressoTexto.textContent = 'Pergunta ' + atual + ' de ' + total + ' · Pontuação: ' + estado.pontuacao;
@@ -163,12 +235,13 @@
     const c = cenarioAtual();
     if (!c) { finalizar(); return; }
 
+    /* A categoria NÃO aparece aqui: ela revelaria a resposta
+       (ex.: "Comunicação legítima"). Só é exibida no feedback. */
     area.innerHTML =
       '<article class="cenario" aria-labelledby="cenario-titulo">' +
         '<header>' +
           '<span class="cenario__canal">' + ns.escaparHtml(c.canal) +
             ' · remetente: ' + ns.escaparHtml(c.remetente) + '</span>' +
-          '<span class="badge badge--info">' + ns.escaparHtml(c.categoria) + '</span>' +
         '</header>' +
         '<h2 id="cenario-titulo" class="visually-hidden">Mensagem recebida</h2>' +
         '<p class="cenario__conteudo">' + ns.escaparHtml(c.conteudo) + '</p>' +
@@ -274,7 +347,9 @@
 
   function finalizar() {
     estado.finalizada = true;
-    const total = estado.ordem.length;
+    /* Usa o número de perguntas RESPONDIDAS, não o tamanho da rodada:
+       se o usuário encerrar no meio, o cálculo continua correto. */
+    const total = estado.respostas.length;
     const aproveitamento = total ? Math.round((estado.acertos / total) * 100) : 0;
 
     /* Agrupa por categoria usando reduce */
@@ -306,10 +381,10 @@
             ' de ' + total + '</strong> cenários.</p>' +
         '</header>' +
         '<dl class="stats mt-6">' +
-          '<div class="stat"><dd class="stat__valor">' + estado.pontuacao + '</dd><dt class="stat__rotulo">Pontuação</dt></div>' +
-          '<div class="stat"><dd class="stat__valor">' + aproveitamento + '%</dd><dt class="stat__rotulo">Aproveitamento</dt></div>' +
-          '<div class="stat"><dd class="stat__valor">' + estado.acertos + '</dd><dt class="stat__rotulo">Acertos</dt></div>' +
-          '<div class="stat"><dd class="stat__valor">' + (total - estado.acertos) + '</dd><dt class="stat__rotulo">Erros</dt></div>' +
+          '<div class="stat"><dt class="stat__rotulo">Pontuação</dt><dd class="stat__valor">' + estado.pontuacao + '</dd></div>' +
+          '<div class="stat"><dt class="stat__rotulo">Aproveitamento</dt><dd class="stat__valor">' + aproveitamento + '%</dd></div>' +
+          '<div class="stat"><dt class="stat__rotulo">Acertos</dt><dd class="stat__valor">' + estado.acertos + '</dd></div>' +
+          '<div class="stat"><dt class="stat__rotulo">Erros</dt><dd class="stat__valor">' + (total - estado.acertos) + '</dd></div>' +
         '</dl>' +
         '<h3 class="mt-6">Desempenho por categoria</h3>' +
         '<div class="tabela-wrapper">' +
@@ -324,7 +399,7 @@
             '<tbody>' + linhasCategoria + '</tbody>' +
           '</table>' +
         '</div>' +
-        '<div class="mt-6" style="display:flex; gap: var(--esp-3); flex-wrap: wrap;">' +
+        '<div class="mt-6 acoes-linha">' +
           '<button type="button" class="btn btn--primario" id="btn-reiniciar">Jogar novamente</button>' +
           '<a class="btn btn--secundario" href="painel.html">Ver meu painel</a>' +
         '</div>' +
@@ -343,9 +418,8 @@
         if (window.confirm('Encerrar a rodada atual? Seu progresso será finalizado.')) {
           finalizar();
         }
-      } else if (estado.finalizada) {
-        window.location.href = 'index.html';
       } else {
+        /* Rodada já finalizada ou nenhuma resposta dada: volta à home */
         window.location.href = 'index.html';
       }
     });
